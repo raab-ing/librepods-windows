@@ -1,0 +1,12 @@
+build/
+*.log
+nul
+.nuget/
+obj/
+bin/
+artifacts/
+.vctargets/
+certs/
+*.user
+*.suo
+__pycache__/

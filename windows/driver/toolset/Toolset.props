@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shim for the WindowsKernelModeDriver10.0 platform toolset backed by the
+     NuGet-delivered WDK (Microsoft.Windows.WDK.x64) instead of an installed WDK.
+     Replicates what a WDK install drops into
+     Platforms\<arch>\PlatformToolsets\WindowsKernelModeDriver10.0. -->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IsKernelModeToolset>true</IsKernelModeToolset>
+    <WDKBuildFolder Condition="'$(WDKBuildFolder)' == ''">10.0.26100.0</WDKBuildFolder>
+    <WDKContentRoot Condition="'$(WDKContentRoot)' != '' and !HasTrailingSlash('$(WDKContentRoot)')">$(WDKContentRoot)\</WDKContentRoot>
+    <SDKContentRoot Condition="'$(SDKContentRoot)' != '' and !HasTrailingSlash('$(SDKContentRoot)')">$(SDKContentRoot)\</SDKContentRoot>
+    <SDKContentRoot Condition="'$(SDKContentRoot)' == ''">$(WDKContentRoot)</SDKContentRoot>
+    <LibrePodsWdkTpv Condition="'$(TargetPlatformVersion)' != '' and Exists('$(WDKContentRoot)Include\$(TargetPlatformVersion)\km\ntddk.h')">$(TargetPlatformVersion)</LibrePodsWdkTpv>
+    <LibrePodsWdkTpv Condition="'$(LibrePodsWdkTpv)' == ''">10.0.26100.0</LibrePodsWdkTpv>
+    <DDKPlatform Condition="'$(Platform)' == 'x64'">x64</DDKPlatform>
+    <DDKPlatform Condition="'$(Platform)' == 'Win32'">x86</DDKPlatform>
+    <DDKPlatform Condition="'$(DDKPlatform)' == ''">$(Platform)</DDKPlatform>
+    <DDK_INC_PATH>$(WDKContentRoot)Include\$(LibrePodsWdkTpv)\km\</DDK_INC_PATH>
+    <DDK_LIB_PATH>$(WDKContentRoot)Lib\$(LibrePodsWdkTpv)\km\$(DDKPlatform)\</DDK_LIB_PATH>
+    <KM_IncludePath>$(WDKContentRoot)Include\$(LibrePodsWdkTpv)\km\</KM_IncludePath>
+    <CRT_IncludePath>$(WDKContentRoot)Include\$(LibrePodsWdkTpv)\km\crt\</CRT_IncludePath>
+    <UM_IncludePath>$(WDKContentRoot)Include\$(LibrePodsWdkTpv)\um\</UM_IncludePath>
+    <KIT_SHARED_IncludePath>$(SDKContentRoot)Include\$(LibrePodsWdkTpv)\shared\</KIT_SHARED_IncludePath>
+    <KIT_SHARED_INC_PATH>$(SDKContentRoot)Include\$(LibrePodsWdkTpv)\shared\</KIT_SHARED_INC_PATH>
+    <KIT_SHARED_INC_PATH_WDK>$(WDKContentRoot)Include\$(LibrePodsWdkTpv)\shared\</KIT_SHARED_INC_PATH_WDK>
+    <WDK_UM_INC_PATH>$(WDKContentRoot)Include\$(LibrePodsWdkTpv)\um\</WDK_UM_INC_PATH>
+    <WDK_UM_LIB_PATH>$(WDKContentRoot)Lib\$(LibrePodsWdkTpv)\um\$(DDKPlatform)\</WDK_UM_LIB_PATH>
+    <SDK_LIB_PATH>$(WDKContentRoot)Lib\$(LibrePodsWdkTpv)\um\$(DDKPlatform)\</SDK_LIB_PATH>
+    <SDK_LibraryPath_DDKPlatform>$(WDKContentRoot)Lib\$(LibrePodsWdkTpv)\km\$(DDKPlatform)\</SDK_LibraryPath_DDKPlatform>
+    <DDK_LibraryPath_DDKPlatform>$(WDKContentRoot)Lib\$(LibrePodsWdkTpv)\km\$(DDKPlatform)\</DDK_LibraryPath_DDKPlatform>
+    <KMDF_INC_PATH>$(WDKContentRoot)Include\wdf\kmdf\</KMDF_INC_PATH>
+    <KMDF_LIB_PATH>$(WDKContentRoot)Lib\wdf\kmdf\$(DDKPlatform)\</KMDF_LIB_PATH>
+    <UMDF_INC_PATH>$(WDKContentRoot)Include\wdf\umdf\</UMDF_INC_PATH>
+    <UMDF_LIB_PATH>$(WDKContentRoot)Lib\wdf\umdf\$(DDKPlatform)\</UMDF_LIB_PATH>
+  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)ImportBefore\*.props" Condition="Exists('$(MSBuildThisFileDirectory)ImportBefore')" />
+  <Import Condition="Exists('$(WDKContentRoot)build\$(WDKBuildFolder)\WindowsDriver.Default.props')" Project="$(WDKContentRoot)build\$(WDKBuildFolder)\WindowsDriver.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.MSVC.Toolset.x64.props" />
+  <Import Project="$(MSBuildThisFileDirectory)ImportAfter\*.props" Condition="Exists('$(MSBuildThisFileDirectory)ImportAfter')" />
+  <Import Project="$(_PlatformFolder)Platform.Common.props" />
+</Project>
