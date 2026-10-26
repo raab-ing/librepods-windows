@@ -8,7 +8,7 @@ A Windows port of [LibrePods](https://github.com/kavishdevar/librepods)
 (Android / Linux) by **Kavish Devar**. All credit for the AirPods protocol
 research, packet layouts, and original implementation goes to the upstream
 project; `windows/shared/` carries the shared sources over from the Linux
-tree.
+tree. Featured on [raab.ing](https://raab.ing/main/projects/librepods-windows/).
 
 ![LibrePods main window](docs/screenshots/main.png)
 
