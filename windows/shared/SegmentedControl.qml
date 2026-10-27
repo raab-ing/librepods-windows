@@ -61,13 +61,6 @@ Control {
             border.color: Qt.rgba(0, 0, 0, 0.12)
             border.width: 1
 
-            // lit top edge so the chip reads as a raised surface
-            Rectangle {
-                x: 2; y: 1
-                width: parent.width - 4; height: 1
-                color: "#ffffff"; opacity: 0.10
-            }
-
             Behavior on x { NumberAnimation { duration: 180; easing.type: Easing.OutCubic } }
         }
 

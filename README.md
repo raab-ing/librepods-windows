@@ -14,7 +14,7 @@ tree. Featured on [raab.ing](https://raab.ing/main/projects/librepods-windows/).
 
 ## Download
 
-**[LibrePods for Windows v0.1.0](../../releases/latest)** — unzip, run
+**[LibrePods for Windows v0.1.1](../../releases/latest)** — unzip, run
 `install.cmd` as administrator, done. The package contains the app, the
 kernel driver it needs, and `INSTALL.txt` with full notes.
 
@@ -53,7 +53,9 @@ kernel driver it needs, and `INSTALL.txt` with full notes.
   pods. **Hearing aid** — loud-sound reduction cap, gain swipe. **Sounds** —
   in-case tone (Find My), Siri chime, chime volume:
 
-  ![eq and hearing](docs/screenshots/settings-eq-hearing.png)
+  ![custom EQ](docs/screenshots/settings-eq.png)
+
+  ![hearing aid](docs/screenshots/settings-hearing.png)
 - **Connectivity & system** — Android cross-device relay, automatic
   connection, session (TiPi) device list, start-on-login, ear-event popups,
   optimized charging, rename, proximity-keys QR:
