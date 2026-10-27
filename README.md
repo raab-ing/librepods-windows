@@ -65,7 +65,9 @@ kernel driver it needs, and `INSTALL.txt` with full notes.
 It also keeps working at reduced function **without** the driver: AirPods
 broadcast a BLE proximity advertisement whose plaintext fields carry the
 device name/model, pod battery (10 % steps), case battery (lid open or pod
-inside), charging flags, and in-ear state — all still shown.
+inside), charging flags, and in-ear state — all still shown:
+
+![limited mode without the driver](docs/screenshots/limited.png)
 
 ## Install
 
